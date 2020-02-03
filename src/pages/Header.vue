@@ -46,6 +46,7 @@
         <span id="clock">
           <span style="float:left">{{dateTime.time}}</span>
         </span>
+        <span><a target="_blank" href="https://github.com/cesiumlab/2019-nCoV-3d" style="color:#00e5e5;">本项目开源</a></span>
       </div>
     </div>
   </div>
