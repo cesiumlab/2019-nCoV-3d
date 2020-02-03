@@ -8,7 +8,7 @@ const areaMap = {
     "重庆市": "chongqing",
     "黑龙江省": "heilongjiang",
     "吉林省": "jilin",
-    "辽宁省": "liaonin",
+    "辽宁省": "liaoning",
     "河北省": "hebei",
     "山东省": "shandong",
     "河南省": "henan",
