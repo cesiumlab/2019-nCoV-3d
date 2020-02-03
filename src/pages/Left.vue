@@ -44,14 +44,14 @@ var shortToFull = {
   陕西: "陕西省",
   青海: "甘肃省",
   青海: "青海省",
-  台湾: "台湾省",
+//  台湾: "台湾省",
   内蒙古: "内蒙古自治区",
   广西: "广西壮族自治区",
   西藏: "西藏自治区",
   宁夏: "宁夏回族自治区",
   新疆: "新疆维吾尔自治区",
-  香港: "香港特别行政区",
-  澳门: "澳门特别行政区"
+//  香港: "香港特别行政区",
+//  澳门: "澳门特别行政区"
 };
 
 export default {
@@ -118,8 +118,11 @@ export default {
       this._earth.cameraFlight.rotateGlobe.cancel();
     },
     toProvince(province) {
+      var name =  shortToFull[province] ;
+      if(!name)
+        return;
       this.$router
-        .push({ name: "flatmap", params: { area: shortToFull[province] } })
+        .push({ name: "flatmap", params: { area:name} })
         .catch(err => {
           err;
         });
@@ -132,6 +135,8 @@ export default {
         var cured = [];
         var dead = [];
         var empty = [];
+        if(!data.subs)
+          return;
         data.subs.sort((a, b) => {
           return a.confirmedCount - b.confirmedCount;
         });

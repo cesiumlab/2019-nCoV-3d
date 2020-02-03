@@ -5,7 +5,7 @@
         <ul>
           <li :class="{active: areaType=='world'}" @click="toWorld()">全球</li>
           <li :class="{active: areaType=='china'}" v-show="areaType!='world'" @click="toChina()">中国</li>
-          <li :class="{active: areaType=='province'}" v-show="areaType=='province'">{{areaName}}</li>
+          <li :class="{active: areaType=='province'}" v-show="areaType=='province'">{{areaName|f_short}}</li>
         </ul>
       </div>
       <div style="float: left;">
@@ -126,6 +126,19 @@ export default {
   filters: {
     f_time(ut) {
       return moment(new Date(ut)).format("MM月DD日HH时");
+    },
+    f_short(fn){
+      const    areaMap = { 
+    "黑龙江省": "黑龙江",
+    "宁夏回族自治区": "宁夏",
+    "内蒙古自治区": "内蒙古", 
+    "新疆维吾尔自治区": "新疆",
+    "西藏自治区": "西藏",
+    "香港特别行政区": "香港",
+    "澳门特别行政区": "澳门",
+    };  
+    
+     return areaMap[fn] || fn;
     }
   },
   computed: {

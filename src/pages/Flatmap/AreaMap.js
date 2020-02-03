@@ -18,7 +18,7 @@ const areaMap = {
     "内蒙古自治区": "neimenggu",
     "甘肃省": "gansu",
     "新疆维吾尔自治区": "xinjiang",
-    "西藏古自治区": "xizang",
+    "西藏自治区": "xizang",
     "江苏省": "jiangsu",
     "安徽省": "anhui",
     "四川省": "sichuan",
@@ -30,8 +30,9 @@ const areaMap = {
     "广东省": "guangdong",
     "福建省": "fujian",
     "台湾省": "taiwan",
-    "香港": "xianggang",
-    "澳门": "aomen",
+    "青海省": "qinghai",
+    "香港特别行政区": "xianggang",
+    "澳门特别行政区": "aomen",
 }
 
 export default areaMap
