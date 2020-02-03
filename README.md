@@ -31,7 +31,7 @@ npm run build
 中间为三维地图
 地图表现方式：
 一，全球柱状图
-![柱状图]](./img/zhu.jpg)
+![柱状图](./img/zhu.jpg)
 二，全国和分省的面着色
 ![全国着色](./img/fenqu.jpg)
 
