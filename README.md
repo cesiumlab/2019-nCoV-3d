@@ -32,14 +32,20 @@ npm run build
 地图表现方式：
 一，全球柱状图
 ![柱状图](./img/zhu.jpg)
+![柱状图](./img/global.gif)
+
 二，全国和分省的面着色
 ![全国着色](./img/fenqu.jpg)
+![全国着色](./img/china.gif)
+![分省着色](./img/province.gif)
 
 三，全国城市热力图
 ![全国热力图](./img/heatmap.jpg)
+![全国热力图](./img/heatmap.gif)
 
 四，医院建设直播
 ![视频直播](./img/zhibo.jpg)
+![视频直播](./img/video.gif)
 
 三维地图基于 [earthsdk](http://www.earthsdk.com)
 
