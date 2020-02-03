@@ -12,7 +12,7 @@
         <p class="text">新型冠状病毒疫情数据可视化</p>
       </div>
       <div class="info">
-        <div style="display: inline-block; width: 332px;">
+        <div style="display: inline-block; width: 336px;">
           <div class="infoItem">
             <span style="color: #f56262;">{{count.confirmedCount}}</span>
             <span>确诊</span>
@@ -25,7 +25,7 @@
             <div style="display: flex;">
               <span style="color: rgb(127, 127, 127);">{{count.deadCount}}</span>
               <span
-                style="line-height: 36px; font-size: 12px; color: rgb(127, 127, 127);"
+                style="margin-top: 10px; font-size: 12px; color: rgb(127, 127, 127);"
               >({{deathrate}})</span>
             </div>
             <span>死亡</span>
@@ -138,6 +138,10 @@ export default {
 };
 </script>
 <style scoped>
+* {
+  margin: 0;
+  padding: 0;
+}
 .header {
   width: 100%;
   height: 80px;
@@ -158,7 +162,7 @@ li {
   float: left;
   color: white;
   font-size: 22px;
-  width: 98px;
+  width: 82px;
   height: 36px;
   line-height: 36px;
   margin-top: 20px;

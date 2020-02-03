@@ -47,9 +47,14 @@ export default {
             .then(result => callback(result));
         };
         // http://www.earthsdk.com/static/data/cities.json
-        const cityCoordsJsonPath = this.$root._dataserver.earthsdkServer + 'cities.json';
+        const cityCoordsJsonPath =
+          this.$root._dataserver.earthsdkServer + "cities.json";
         console.log(cityCoordsJsonPath);
-        g_heatMap = new VirusHeatMap(this.$root._earth, fetchCityInfosCallback, cityCoordsJsonPath);
+        g_heatMap = new VirusHeatMap(
+          this.$root._earth,
+          fetchCityInfosCallback,
+          cityCoordsJsonPath
+        );
         // g_heatMap.updateDate = this.$root.currentDay;
         g_heatMap.updateTime = this.$root.currentTime;
         window.g_heatMap = g_heatMap;
@@ -142,5 +147,6 @@ export default {
   margin: 0px;
   border-radius: 0px;
   color: white;
+  font-size: 14px;
 }
 </style>

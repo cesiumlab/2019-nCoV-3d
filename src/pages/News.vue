@@ -4,7 +4,7 @@
       <span class="newstitle">实时播报</span>
       <div class="newsList" v-for="(news,index) in newses" :key="index">
         <div class="dateList">
-          <div style="text-align: center;">{{news.pubDate|f_time}}</div>
+          <div style="text-align: center; font-size: 14px;">{{news.pubDate|f_time}}</div>
           <div style="text-align: center; font-size: 12px;">{{news.pubDate|f_time2}}</div>
           <span class="dateItem"></span>
         </div>
@@ -14,7 +14,7 @@
             {{news.title}}
           </div>
           <a :href="news.sourceUrl" target="__blank" style="font-size: 12px;">{{news.summary}}</a>
-          <div style="text-align: right;">信息来源：{{news.infoSource}}</div>
+          <div style="text-align: right; font-size: 14px;">信息来源：{{news.infoSource}}</div>
         </div>
       </div>
     </div>
@@ -109,6 +109,7 @@ a {
 }
 .newsItemTitle {
   font-weight: bold;
+  font-size: 14px;
 }
 .newsRight {
   width: 70%;

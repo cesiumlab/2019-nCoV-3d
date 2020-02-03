@@ -432,6 +432,7 @@ export default {
   background-size: contain;
   vertical-align: middle;
   margin-right: 12px;
+  margin-top: -3px;
 }
 .playbutton .play:hover {
   background: url(../img/play_on.png) no-repeat;
@@ -445,6 +446,7 @@ export default {
   background-size: contain;
   vertical-align: middle;
   margin-right: 12px;
+  margin-top: -3px;
 }
 .playbutton .zanting:hover {
   background: url(../img/zanting_on.png) no-repeat;

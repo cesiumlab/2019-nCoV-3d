@@ -180,6 +180,7 @@ export default {
 }
 .legend_label {
   color: #fff;
+  font-size: 14px;
 }
 .label {
   position: absolute;

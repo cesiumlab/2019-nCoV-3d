@@ -2,7 +2,10 @@
   <div class="map3d">
     <ul>
       <li>
-        <a @click="tochina()" :class="{active: (navIndex=='flatmap' || navIndex == 'beammap')}">疫情分布图</a>
+        <a
+          @click="tochina()"
+          :class="{active: (navIndex=='flatmap' || navIndex == 'beammap')}"
+        >疫情分布图</a>
       </li>
       <li>
         <a @click="heatmap()" :class="{active: navIndex=='heatmap'}">疫情热力图</a>
@@ -90,7 +93,7 @@ export default {
       }
     },
     $route(to, from) {
-      this.navIndex = to.name; 
+      this.navIndex = to.name;
     }
   }
 };
@@ -109,6 +112,7 @@ li {
   line-height: 30px;
   background: url(../img/nav.png) no-repeat;
   background-size: 100% 100%;
+  cursor: pointer;
 }
 .map3d {
   position: absolute;
@@ -121,6 +125,7 @@ li {
   font-size: 18px;
   font-weight: bold;
 }
+li a:hover,
 .active {
   color: #03d8da;
   border-bottom: #03d8da 2px solid;

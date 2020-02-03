@@ -160,7 +160,9 @@ export default {
       let self = this;
       let viewer = this._earth.czm.viewer;
       var promise = Cesium.GeoJsonDataSource.load(
-        this.$root._dataserver.earthsdkServer + self.areaMap[this.areaName] + ".json"
+        this.$root._dataserver.earthsdkServer +
+          self.areaMap[this.areaName] +
+          ".json"
       );
       promise.then(function(dataSource) {
         viewer.dataSources.add(dataSource);
@@ -274,6 +276,7 @@ export default {
 }
 .legend_label {
   color: #fff;
+  font-size: 14px;
 }
 .label {
   position: absolute;
