@@ -28,6 +28,7 @@ const areaMap = {
     "贵州省": "guizhou",
     "云南省": "yunnan",
     "广东省": "guangdong",
+    "广西壮族自治区": "guangxi",
     "福建省": "fujian",
     "台湾省": "taiwan",
     "青海省": "qinghai",
