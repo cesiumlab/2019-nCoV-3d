@@ -141,6 +141,7 @@ export default {
   background: black;
   background: url(../img/video_name.png) no-repeat;
   background-size: 100% 100%;
+  font-size: 14px;
 }
 .fsbtn {
   position: absolute;
