@@ -44,23 +44,23 @@ var shortToFull = {
   陕西: "陕西省",
   青海: "甘肃省",
   青海: "青海省",
-//  台湾: "台湾省",
+  //  台湾: "台湾省",
   内蒙古: "内蒙古自治区",
   广西: "广西壮族自治区",
   西藏: "西藏自治区",
   宁夏: "宁夏回族自治区",
   新疆: "新疆维吾尔自治区",
-//  香港: "香港特别行政区",
-//  澳门: "澳门特别行政区"
+  //  香港: "香港特别行政区",
+  //  澳门: "澳门特别行政区"
 };
 
 export default {
-  data() {
+  data () {
     return {
       areaName: "china"
     };
   },
-  mounted() {
+  mounted () {
     this._eChart = echarts.init(this.$refs.charts);
     //根据窗口的大小变动图表
     window.addEventListener("resize", () => {
@@ -98,7 +98,7 @@ export default {
     });
   },
   methods: {
-    toWorld() {
+    toWorld () {
       this.$router
         .push({ name: "beammap", params: { area: "world" } })
         .catch(err => {
@@ -108,7 +108,7 @@ export default {
       this._earth.cameraViewManager.globe.flyTo();
       this._earth.cameraFlight.rotateGlobe.start();
     },
-    toChina() {
+    toChina () {
       this.$router
         .push({ name: "flatmap", params: { area: "china" } })
         .catch(err => {
@@ -117,17 +117,17 @@ export default {
       this._earth.cameraViewManager.china.flyTo();
       this._earth.cameraFlight.rotateGlobe.cancel();
     },
-    toProvince(province) {
-      var name =  shortToFull[province] ;
-      if(!name)
+    toProvince (province) {
+      var name = shortToFull[province];
+      if (!name)
         return;
       this.$router
-        .push({ name: "flatmap", params: { area:name} })
+        .push({ name: "flatmap", params: { area: name } })
         .catch(err => {
           err;
         });
     },
-    updateChart() {
+    updateChart () {
       this.$root._dataserver.loadSubArea(this.$root.currentArea).then(data => {
         var ydata = [];
         var confirmed = [];
@@ -135,7 +135,7 @@ export default {
         var cured = [];
         var dead = [];
         var empty = [];
-        if(!data.subs)
+        if (!data.subs)
           return;
         data.subs.sort((a, b) => {
           return a.confirmedCount - b.confirmedCount;
@@ -146,8 +146,8 @@ export default {
             maxValue > element.confirmedCount
               ? maxValue
               : element.confirmedCount +
-                element.curedCount +
-                element.deadCount;
+              element.curedCount +
+              element.deadCount;
         });
         data.subs.forEach(element => {
           ydata.push(element.name);
@@ -157,9 +157,9 @@ export default {
           dead.push(element.deadCount);
           empty.push(
             maxValue -
-              element.confirmedCount -
-              element.curedCount -
-              element.deadCount
+            element.confirmedCount -
+            element.curedCount -
+            element.deadCount
           );
         });
 
@@ -170,29 +170,17 @@ export default {
               // 坐标轴指示器，坐标轴触发有效
               type: "shadow" // 默认为直线，可选为：'line' | 'shadow'
             },
-            formatter: function(param) {
-              return (
-                param[0].name +
-                "</br>" +
-                param[0].marker +
-                param[0].seriesName +
-                ": " +
-                param[0].data +
-                "</br>" +
-                param[1].marker +
-                param[1].seriesName +
-                ": " +
-                param[1].data +
-                "</br>" +
-                param[2].marker +
-                param[2].seriesName +
-                ": " +
-                param[2].data +
-                "</br>" +
-                "死亡率: " +
-                Math.round(param[1].data * 10000 / (param[0].data + param[1].data + param[2].data)) / 100 +
-                "%</br>"
-              );
+            formatter: function (param) {
+              var tip = param[0].name + "</br>";
+              for (var i = 0; i < param.length; i++) {
+                if (param[i].seriesName.length > 0) {
+                  tip += param[i].marker + param[i].seriesName + ": " + param[i].data + "</br>";
+                }
+              }
+              if (param.length > 3) {
+                tip += "死亡率: " + Math.round(param[1].data * 10000 / (param[0].data + param[1].data + param[2].data)) / 100 + "%";
+              }
+              return tip;
             }
           },
           legend: {
@@ -299,13 +287,13 @@ export default {
     }
   },
   watch: {
-    "$root.currentArea"(v) {
+    "$root.currentArea" (v) {
       this.areaName = v;
       this.updateChart();
     }
   },
   computed: {
-    areaType() {
+    areaType () {
       if (this.areaName == "china" || this.areaName == "world")
         return this.areaName;
       return "province";

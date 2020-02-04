@@ -18,7 +18,7 @@
 import echarts from "echarts";
 
 export default {
-  data() {
+  data () {
     return {
       areaName: "全国",
       days: [],
@@ -27,7 +27,7 @@ export default {
       options: {}
     };
   },
-  mounted() {
+  mounted () {
     this._eChart = echarts.init(this.$refs.charts);
 
     //根据窗口的大小变动图表
@@ -38,12 +38,12 @@ export default {
     this.updateChart();
   },
   computed: {
-    btnText() {
+    btnText () {
       return this.intervalID ? "停止" : "播放";
     }
   },
   methods: {
-    nextTime() {
+    nextTime () {
       this.current++;
       if (this.current >= this._xData.length) {
         this.current = 0;
@@ -54,7 +54,7 @@ export default {
 
       this.setChartOptions();
     },
-    stopAnim() {
+    stopAnim () {
       if (this.intervalID) {
         clearInterval(this.intervalID);
         this.intervalID = undefined;
@@ -62,7 +62,7 @@ export default {
       }
       this.$root.startGlobeUpdate();
     },
-    play() {
+    play () {
       if (!this.intervalID && this._xData && this._xData.length > 0) {
         var self = this;
         this.intervalID = setInterval(this.nextTime, 1000);
@@ -72,7 +72,7 @@ export default {
         this.stopAnim();
       }
     },
-    updateChart() {
+    updateChart () {
       //获取所有统计时间
 
       this.$root._dataserver.getHistoryDays().then(days => {
@@ -110,21 +110,21 @@ export default {
               element.confirmedCount === 0
                 ? 0
                 : Math.round(
-                    (element.curedCount * 10000) /
-                      (element.confirmedCount +
-                        element.deadCount +
-                        element.curedCount)
-                  ) / 100
+                  (element.curedCount * 10000) /
+                  (element.confirmedCount +
+                    element.deadCount +
+                    element.curedCount)
+                ) / 100
             );
             this._deadRatio.push(
               element.confirmedCount === 0
                 ? 0
                 : Math.round(
-                    (element.deadCount * 10000) /
-                      (element.confirmedCount +
-                        element.deadCount +
-                        element.curedCount)
-                  ) / 100
+                  (element.deadCount * 10000) /
+                  (element.confirmedCount +
+                    element.deadCount +
+                    element.curedCount)
+                ) / 100
             );
           });
 
@@ -132,7 +132,7 @@ export default {
         });
       });
     },
-    setChartOptions() {
+    setChartOptions () {
       var series = [
         {
           name: "确诊",
@@ -231,52 +231,12 @@ export default {
       var option = {
         tooltip: {
           trigger: "axis",
-          formatter: function(param) {
-            return (
-              param[0].name +
-              "</br>" +
-              param[0].marker +
-              param[0].seriesName +
-              ": " +
-              param[0].data +
-              "</br>" +
-              param[1].marker +
-              param[1].seriesName +
-              ": " +
-              param[1].data +
-              "</br>" +
-              param[2].marker +
-              param[2].seriesName +
-              ": " +
-              param[2].data +
-              "</br>" +
-              (self.areaName === "全国"
-                ? param[3].marker +
-                  param[3].seriesName +
-                  ": " +
-                  param[3].data +
-                  "</br>" +
-                  param[4].marker +
-                  param[4].seriesName +
-                  ": " +
-                  param[4].data +
-                  "%</br>" +
-                  param[5].marker +
-                  param[5].seriesName +
-                  ": " +
-                  param[5].data +
-                  "%"
-                : param[3].marker +
-                  param[3].seriesName +
-                  ": " +
-                  param[3].data +
-                  "%</br>" +
-                  param[4].marker +
-                  param[4].seriesName +
-                  ": " +
-                  param[4].data +
-                  "%")
-            );
+          formatter: function (param) {
+            var tip = param[0].name + "</br>";
+            for (var i = 0; i < param.length; i++) {
+              tip += param[i].marker + param[i].seriesName + ": " + param[i].data + (param[i].seriesName.indexOf("率") > 0 ? "%" : "") + "</br>";
+            }
+            return tip;
           }
         },
         legend: {
@@ -387,7 +347,7 @@ export default {
     }
   },
   watch: {
-    "$root.currentArea"(v) {
+    "$root.currentArea" (v) {
       if (v == "world") this.areaName = "全球";
       else if (v == "china") this.areaName = "全国";
       else this.areaName = v;
