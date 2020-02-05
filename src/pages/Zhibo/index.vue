@@ -12,20 +12,20 @@ export default {
     this.$root.$emit("zhibo.show", true);
     this._earth = this.$root._earth;
 
-    this._google = this._earth.sceneTree.$refs.google;
-    this._shense = this._earth.sceneTree.$refs.shense;
-    this._terrain = this._earth.sceneTree.$refs.terrain;
+    
+    this._shense = this._earth.sceneTree.$refs.shense; 
+    this._huoshenshan_all = this._earth.sceneTree.$refs.huoshenshan_all; 
 
-    this._google.enabled = true;
-    this._shense.enabled = false;
-    this._terrain.enabled = true;
+ 
+    this._shense.enabled = false; 
+
+    this._huoshenshan_all.setAllChildrenEnabled(true); 
   },
   methods: {},
   beforeDestroy() {
-    this.$root.$emit("zhibo.show", false);
-    this._google.enabled = false;
-    this._shense.enabled = true;
-    this._terrain.enabled = false;
+    this.$root.$emit("zhibo.show", false); 
+    this._shense.enabled = true; 
+    this._huoshenshan_all.setAllChildrenEnabled(false); 
   }
 };
 </script>
