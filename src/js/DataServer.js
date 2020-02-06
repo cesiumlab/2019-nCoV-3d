@@ -440,9 +440,10 @@ class DataServer {
 
                     // var endDay = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()).getTime();
                     var endDay = new Date();
+                    endDay =  new Date(endDay.getFullYear(), endDay.getMonth(), endDay.getDate()).getTime() + daytime - 1;
                     var ret = [];
 
-                    while (startDay < endDay) {
+                    while (startDay <= endDay) {
 
                         ret.push(new Date(startDay));
 

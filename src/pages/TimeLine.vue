@@ -282,7 +282,7 @@ export default {
               }
             },
             splitLine: {
-              show: false,
+              show: true,
               lineStyle: {
                 type: "dashed"
               }
@@ -305,7 +305,7 @@ export default {
               formatter: "{value} %"
             },
             splitLine: {
-              show: true,
+              show: false,
               lineStyle: {
                 type: "dashed"
               }
