@@ -13,6 +13,10 @@
       <li>
         <a @click="zhibo()" :class="{active: navIndex=='zhibo'}">火神山&雷神山医院</a>
       </li>
+
+      <li>
+        <a @click="zhanyi()" :class="{active: navIndex=='zhanyi'}">一省一市战“疫”</a>
+      </li>
     </ul>
   </div>
 </template>
@@ -41,6 +45,18 @@ export default {
       });
   },
   methods: {
+    zhanyi() {
+      this.$router
+        .push({ name: "zhanyi", params: { area: "china" } })
+        .catch(err => {
+          err;
+        });
+      
+      //开始环绕飞行
+
+     this._earth.camera.flyAround( [1.947900386934476, 0.5442331843381032, 0],2000000,[0,-0.7,0]);
+
+    },
     flyTo(index) {
       this._earth.cameraViewManager.views[index].flyTo();
     },
@@ -105,9 +121,9 @@ a {
 }
 li {
   float: left;
-  width: 440px;
+  width: 23.75%;
   height: 30px;
-  margin-left: 6px;
+  margin-left: 1%;
   text-align: center;
   line-height: 30px;
   background: url(../img/nav.png) no-repeat;
